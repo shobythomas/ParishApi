@@ -12,7 +12,7 @@ namespace ParishApi.Interface
 
         Member EditMember(Member model);
 
-        Member DeleteMember(int memberId);
+        string DeleteMember(int memberId);
 
         List<Member> GetAllMmebers();
 

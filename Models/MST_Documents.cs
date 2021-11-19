@@ -9,12 +9,21 @@ namespace ParishApi.Models
     public class MST_Documents
     {
         [Key]
-        public int DocId { get; set; }
-        public string DocName { get; set; }
-        public Nullable<System.DateTime> DocDate { get; set; }
-        public string Docurl { get; set; }
-        public string FileExtension { get; set; }
-        public string DocComment { get; set; }
-        public Nullable<System.DateTime> CreatedDate { get; set; }
+        public int docid { get; set; }
+        [Required]
+        [MaxLength(100, ErrorMessage = "Document Name can only be 100 characters long!!")]
+        public string docname { get; set; }
+        public Nullable<System.DateTime> docdate { get; set; }
+
+        [Required]
+        [MaxLength(500, ErrorMessage = "Document Url can only be 500 characters long!!")]
+        public string docurl { get; set; }
+
+        [Required]
+        [MaxLength(20, ErrorMessage = "File Extention can only be 100 characters long!!")]
+        public string fileextension { get; set; }
+        [Required]
+        public string doccomment { get; set; }
+        public Nullable<System.DateTime> createddate { get; set; }
     }
 }
