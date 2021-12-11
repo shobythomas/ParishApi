@@ -7,6 +7,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using ParishApi.Entity;
+using ParishApi.Interface;
+using ParishApi.ParishData;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,6 +31,11 @@ namespace ParishApi
             services.AddControllers();
             services.AddDbContextPool<ParishContext>
                (options => options.UseSqlServer(Configuration.GetConnectionString("ParishContextConnectionString")));
+
+            services.AddScoped<IMemberData, MemberData>();
+            services.AddScoped<IFamilyMemberData, MemberFamilyData>();
+            services.AddScoped<IUserLoginData, UserLoginData>();
+            services.AddScoped<IDocumentData, DocumentData>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

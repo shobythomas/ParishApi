@@ -17,5 +17,7 @@ namespace ParishApi.Interface
         List<Member> GetAllMmebers();
 
         Member GetSingleMember(int memberId);
+
+        bool ValidateUserName(string userName);
     }
 }

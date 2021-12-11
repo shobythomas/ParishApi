@@ -52,8 +52,27 @@ namespace ParishApi.ParishData
             return model;
         }
 
+
         public UserLogin FetchSingleUserLogin(string userCode) => _parishContext.UserLogin.Find(userCode);
 
+        public UserLogin FetchUserWithNameAndPwd(string username, string pwd)
+        {
+            return _parishContext.UserLogin.Where(p => p.username == username && p.password == pwd).FirstOrDefault();
+        }
+
         public List<UserLogin> GetAllUserLogin() => _parishContext.UserLogin.ToList();
+
+        public bool UpdateLastLogin(UserLogin model)
+        {
+            var existingDoc = _parishContext.UserLogin.Find(model.username);
+            if (existingDoc != null)
+            {
+                _parishContext.UserLogin.Update(model);
+                _parishContext.SaveChanges();
+            }
+            return true;
+        }
+
+        
     }
 }

@@ -19,9 +19,17 @@ namespace ParishApi.ParishData
 
         public Member AddMember(Member model)
         {
-            _parishContext.Member.Add(model);
-            _parishContext.SaveChanges();
-            return model;
+            try
+            {
+                _parishContext.Member.Add(model);
+                _parishContext.SaveChanges();
+                return model;
+            }
+            catch(Exception ex)
+            {
+                return null;
+            }
+           
         }
 
         public string DeleteMember(int memberId)
@@ -64,5 +72,12 @@ namespace ParishApi.ParishData
 
         public List<Member> GetAllMmebers() => _parishContext.Member.ToList();
         public Member GetSingleMember(int memberId) => _parishContext.Member.Find(memberId);
+
+        public bool ValidateUserName(string userName)
+        {
+            var res = _parishContext.UserLogin.Where(p => p.username == userName).ToList();
+            bool status = res.Count != 0 ? true : false;
+            return status;
+        }
     }
 }

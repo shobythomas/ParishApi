@@ -17,5 +17,11 @@ namespace ParishApi.Interface
         List<UserLogin> GetAllUserLogin();
 
         UserLogin FetchSingleUserLogin(string userCode);
+
+        UserLogin FetchUserWithNameAndPwd(string username, string pwd);
+
+        bool UpdateLastLogin(UserLogin model);
+
+        
     }
 }

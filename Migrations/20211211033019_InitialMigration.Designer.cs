@@ -10,8 +10,8 @@ using ParishApi.Entity;
 namespace ParishApi.Migrations
 {
     [DbContext(typeof(ParishContext))]
-    [Migration("20211119055029_ThirdMigration")]
-    partial class ThirdMigration
+    [Migration("20211211033019_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
