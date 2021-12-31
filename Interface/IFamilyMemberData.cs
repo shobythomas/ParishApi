@@ -1,4 +1,5 @@
 ﻿using ParishApi.Models;
+using ParishApi.Models.UIModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,5 +18,7 @@ namespace ParishApi.Interface
         List<MemberFamilyDetail> GetAllMemberFamilyMembers(int memberId);
 
         MemberFamilyDetail FetchSingleFamilyMember(int familyMemberID);
+
+        List<MemberFamilyUIModel> GetAllNewFamilyMembers();
     }
 }

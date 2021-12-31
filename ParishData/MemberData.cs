@@ -71,6 +71,9 @@ namespace ParishApi.ParishData
         }
 
         public List<Member> GetAllMmebers() => _parishContext.Member.ToList();
+
+        public List<Member> GetAllNewMembers() => _parishContext.Member.Where(p => p.joiningdate == DateTime.Now.Date).ToList();
+
         public Member GetSingleMember(int memberId) => _parishContext.Member.Find(memberId);
 
         public bool ValidateUserName(string userName)

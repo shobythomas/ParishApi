@@ -19,6 +19,7 @@ namespace ParishApi.Controllers
         private IMemberData _memberData;
 
         private IUserLoginData _userData;
+
         public MemberController(IMemberData memberData, IUserLoginData userData)
         {
             _memberData = memberData;

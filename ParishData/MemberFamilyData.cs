@@ -1,6 +1,7 @@
 ﻿using ParishApi.Entity;
 using ParishApi.Interface;
 using ParishApi.Models;
+using ParishApi.Models.UIModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -56,5 +57,20 @@ namespace ParishApi.ParishData
         public MemberFamilyDetail FetchSingleFamilyMember(int familyMemberID) => _parishContext.MemberFamilyDetail.Find(familyMemberID);
 
         public List<MemberFamilyDetail> GetAllMemberFamilyMembers(int memberId) => _parishContext.MemberFamilyDetail.Where(p=>p.memberid==memberId).ToList();
+
+        public List<MemberFamilyUIModel> GetAllNewFamilyMembers()
+        {
+
+            return (from m in _parishContext.Member
+                    join f in _parishContext.MemberFamilyDetail on m.memberid equals f.memberid
+                    into sls
+                    from details in sls.DefaultIfEmpty()
+                    select new MemberFamilyUIModel()
+                    {
+                        membername = m.firstname,
+                        memberfamilyid = details.memberfamilyid,
+                        relname = details.relname
+                    }).ToList();
+        }
     }
 }
