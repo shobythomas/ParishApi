@@ -72,7 +72,7 @@ namespace ParishApi.ParishData
 
         public List<Member> GetAllMmebers() => _parishContext.Member.ToList();
 
-        public List<Member> GetAllNewMembers() => _parishContext.Member.Where(p => p.joiningdate == DateTime.Now.Date).ToList();
+        public List<Member> GetAllNewMembers() => _parishContext.Member.Where(p => p.joiningdate == DateTime.Now.Date.AddDays(-30)).ToList();
 
         public List<Member> GetAllPendingMembers()
         {
