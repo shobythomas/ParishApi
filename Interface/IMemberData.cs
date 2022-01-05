@@ -15,8 +15,11 @@ namespace ParishApi.Interface
         string DeleteMember(int memberId);
 
         List<Member> GetAllMmebers();
+        List<Member> GetAllPendingMembers();
 
         Member GetSingleMember(int memberId);
+
+        Member GetMemberByCode(string memberCode);
 
         bool ValidateUserName(string userName);
 

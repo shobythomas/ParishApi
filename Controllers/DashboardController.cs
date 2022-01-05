@@ -22,13 +22,27 @@ namespace ParishApi.Controllers
             _familyData = familyData;
         }
 
-        [HttpPost, ActionName("ListAllNewFamilyMembers")]
-        [Route("/api/ListAllNewFamilyMembers")]
-        public IActionResult ListAllNewFamilyMembers()
+        [HttpPost, ActionName("ListAllPendingFamilyMembers")]
+        [Route("/api/ListAllPendingFamilyMembers")]
+        public IActionResult ListAllPendingFamilyMembers()
         {
             try
             {
                 var res = _familyData.GetAllNewFamilyMembers();
+                return Ok(res);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+        [HttpPost, ActionName("ListAllPendingMembers")]
+        [Route("/api/ListAllPendingMembers")]
+        public IActionResult ListAllPendingMembers()
+        {
+            try
+            {
+                var res = _memberData.GetAllPendingMembers();
                 return Ok(res);
             }
             catch (Exception ex)

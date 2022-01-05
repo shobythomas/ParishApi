@@ -69,8 +69,10 @@ namespace ParishApi.ParishData
                     {
                         membername = m.firstname,
                         memberfamilyid = details.memberfamilyid,
-                        relname = details.relname
-                    }).ToList();
+                        relname = details.relname,
+                        relation=details.relation,
+                        isapproved=details.isapproved
+                    }).Where(p=>p.isapproved==false).ToList();
         }
     }
 }
