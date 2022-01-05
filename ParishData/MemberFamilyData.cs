@@ -53,6 +53,24 @@ namespace ParishApi.ParishData
             }
             return model;
         }
+        public bool UpdateStatus(MemberFamilyDetail repCom)
+        {
+            try
+            {
+                var item = FetchSingleFamilyMember(repCom.memberfamilyid);
+                if (item != null)
+                {
+                    item.isapproved = repCom.isapproved;
+
+                    return _parishContext.SaveChanges() >= 0;
+                }
+                return false;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
 
         public MemberFamilyDetail FetchSingleFamilyMember(int familyMemberID) => _parishContext.MemberFamilyDetail.Find(familyMemberID);
 

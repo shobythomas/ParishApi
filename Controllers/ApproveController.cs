@@ -27,6 +27,28 @@ namespace ParishApi.Controllers
             _userLoginData = userLoginData;
         }
 
+        [HttpPost, ActionName("ApproveFamilyMember")]
+        [Route("/api/ApproveFamilyMember")]
+        public IActionResult ApproveFamilyMember(MemberFamilyUIModel model)
+        {
+            try
+            {
+                var familyDetail = new MemberFamilyDetail
+                {
+                    memberid = model.memberid,
+                    memberfamilyid = Convert.ToInt32(model.memberfamilyid),
+                    isapproved = true
+                };
+                //send mail code from here
+                _familyData.UpdateStatus(familyDetail);
+                return Ok();
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
         [HttpPost, ActionName("ApproveMember")]
         [Route("/api/ApproveMember")]
         public IActionResult ApproveMember(MemberUIModel model)

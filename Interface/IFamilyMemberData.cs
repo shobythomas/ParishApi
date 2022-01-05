@@ -18,6 +18,7 @@ namespace ParishApi.Interface
         List<MemberFamilyDetail> GetAllMemberFamilyMembers(int memberId);
 
         MemberFamilyDetail FetchSingleFamilyMember(int familyMemberID);
+        bool UpdateStatus(MemberFamilyDetail)
 
         List<MemberFamilyUIModel> GetAllNewFamilyMembers();
     }
