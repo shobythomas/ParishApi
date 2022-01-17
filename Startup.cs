@@ -29,6 +29,7 @@ namespace ParishApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddAutoMapper(typeof(AutoMapperProfile).Assembly);
             services.AddDbContextPool<ParishContext>
                (options => options.UseSqlServer(Configuration.GetConnectionString("ParishContextConnectionString")));
 

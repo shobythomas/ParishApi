@@ -14,4 +14,33 @@ namespace ParishApi.Models.UIModels
         public string relation { get; set; }
         public Nullable<bool> isapproved { get; set; }
     }
+    public class MemberFamily
+    {
+        public int memberfamilyid { get; set; }
+
+        public Nullable<int> memberid { get; set; }
+
+        public string relname { get; set; }
+        public Nullable<System.DateTime> reldob { get; set; }
+
+        public string relgender { get; set; }
+
+        public string relmobileno { get; set; }
+
+        public string address { get; set; }
+
+        public string address1 { get; set; }
+
+        public string state { get; set; }
+
+
+        public string country { get; set; }
+        public Nullable<bool> isapproved { get; set; }
+
+        public string bloodgroup { get; set; }
+
+        public string relation { get; set; }
+
+        public string emailid { get; set; }
+    }
 }

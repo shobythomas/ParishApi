@@ -43,6 +43,54 @@ namespace ParishApi.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+
+        
+
+
+        [HttpPost,ActionName("UpdateMember")]
+        [Route("/api/UpdateMember")]
+        public IActionResult UpdateMember(MemberUIModel model)
+        {
+            OutputMsgUIModel _outPut = new OutputMsgUIModel();
+            try
+            {
+                var member = new Member
+                {
+                    memberid=model.memberid,
+                    membercode = model.membercode,
+                    firstname = model.firstname,
+                    middlename = model.middlename,
+                    lastname = model.middlename,
+                    dob = (model.dob),
+                    weddingdate = (model.weddingdate),
+                    gender = model.gender,
+                    bloodgroup = model.bloodgroup,
+                    occupation = model.occupation,
+                    qualification = model.qualification,
+                   // Permenant_Address = txtAddress2.Text,
+                    presentaddress = model.presentaddress,
+                    mobileno = model.mobileno,
+                    homephone = model.homephone,
+                    workphone = model.workphone,
+                    email = model.email,
+                    subscriptionamount = Convert.ToDecimal(0),
+                    street = model.street,
+                    homeparish = model.homeparish,
+                    city = model.city,
+                    pincode = model.pincode,
+                    country = StMarysConstant.Country,
+                };
+                _memberData.EditMember(member);
+                _outPut.Status = true;
+                _outPut.MSG = "Updated Successfully!";
+                return Ok(_outPut);
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
         [HttpPost, ActionName("RegisterMember")]
         [Route("/api/RegisterMember")]
         public IActionResult RegisterMember(MemberUIModel model)

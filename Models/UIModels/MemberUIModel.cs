@@ -7,7 +7,7 @@ namespace ParishApi.Models.UIModels
 {
     public class MemberUIModel
     {
-        
+        public int memberid { get; set; }
         public string username { get; set; }
         public string membercode { get; set; }
 
