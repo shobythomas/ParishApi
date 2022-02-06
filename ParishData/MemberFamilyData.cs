@@ -43,13 +43,13 @@ namespace ParishApi.ParishData
             }
         }
 
-        public MemberFamilyDetail EditFamilyMember(MemberFamilyDetail model)
+        public async Task<MemberFamilyDetail> EditFamilyMemberAync(MemberFamilyDetail model)
         {
             var existingMember = _parishContext.MemberFamilyDetail.Find(model.memberfamilyid);
             if (existingMember != null)
             {
-                _parishContext.MemberFamilyDetail.Update(model);
-                _parishContext.SaveChanges();
+               _parishContext.MemberFamilyDetail.Update(model);
+               _parishContext.SaveChanges();
             }
             return model;
         }
@@ -89,7 +89,7 @@ namespace ParishApi.ParishData
                         memberfamilyid = details.memberfamilyid,
                         relname = details.relname,
                         relation=details.relation,
-                        isapproved=details.isapproved
+                        isapproved= (bool)details.isapproved
                     }).Where(p=>p.isapproved==false).ToList();
         }
     }

@@ -12,16 +12,16 @@ namespace ParishApi.Models.UIModels
         public int memberfamilyid { get; set; }
         public int memberid { get; set; }
         public string relation { get; set; }
-        public Nullable<bool> isapproved { get; set; }
+        public bool isapproved { get; set; }
     }
     public class MemberFamily
     {
         public int memberfamilyid { get; set; }
 
-        public Nullable<int> memberid { get; set; }
+        public int memberid { get; set; }
 
         public string relname { get; set; }
-        public Nullable<System.DateTime> reldob { get; set; }
+        public DateTime reldob { get; set; }
 
         public string relgender { get; set; }
 
@@ -35,7 +35,7 @@ namespace ParishApi.Models.UIModels
 
 
         public string country { get; set; }
-        public Nullable<bool> isapproved { get; set; }
+        public bool isapproved { get; set; }
 
         public string bloodgroup { get; set; }
 

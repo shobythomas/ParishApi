@@ -64,7 +64,9 @@ namespace ParishApi.ParishData
             var existingMember = _parishContext.Member.Find(model.memberid);
             if (existingMember != null)
             {
-                _parishContext.Member.Update(model);
+                existingMember.firstname = model.firstname != null && model.firstname != string.Empty ? model.firstname : existingMember.firstname;
+                existingMember.middlename = model.middlename != null && model.middlename != string.Empty ? model.middlename : existingMember.middlename;
+                //_parishContext.Member.Update(model);
                 _parishContext.SaveChanges();
             }
             return model;

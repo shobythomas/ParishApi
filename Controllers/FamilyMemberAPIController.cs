@@ -25,6 +25,40 @@ namespace ParishApi.Controllers
 
         }
 
+        [HttpPost, ActionName("GetMemberAllFamilyDetails")]
+        [Route("/api/GetMemberAllFamilyDetails")]
+        public IActionResult GetMemberAllFamilyDetails(MemberFamily model)
+        {
+            try
+            {
+                var res = _familyMemberData.GetAllMemberFamilyMembers(model.memberid);
+                return Ok(res);
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+        [HttpPost, ActionName("EditFamilyMember")]
+        [Route("/api/EditFamilyMember")]
+        public IActionResult EditFamilyMember(MemberFamily model)
+        {
+            OutputMsgUIModel _outPut = new OutputMsgUIModel();
+            try
+            {
+                MemberFamilyDetail familyMember = mapper.Map<MemberFamilyDetail>(model);
+                _familyMemberData.EditFamilyMemberAync(familyMember);
+                _outPut.Status = true;
+                _outPut.MSG = "Updated sucessfully!";
+                return Ok(_outPut);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
         [HttpPost, ActionName("CreateFamilyMmember")]
         [Route("/api/CreateFamilyMember")]
         public IActionResult CreateFamilyMember(MemberFamily model)
@@ -35,7 +69,7 @@ namespace ParishApi.Controllers
                 MemberFamilyDetail familyMember = mapper.Map<MemberFamilyDetail>(model);
                 _familyMemberData.AddFamilyMember(familyMember);
                 _outPut.Status = true;
-                _outPut.MSG = "Updated Successfully!";
+                _outPut.MSG = "Created Successfully!";
                 return Ok(_outPut);
             }
             catch (Exception ex)

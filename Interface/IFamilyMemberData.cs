@@ -11,7 +11,7 @@ namespace ParishApi.Interface
     {
         MemberFamilyDetail AddFamilyMember(MemberFamilyDetail model);
 
-        MemberFamilyDetail EditFamilyMember(MemberFamilyDetail model);
+        Task<MemberFamilyDetail> EditFamilyMemberAync(MemberFamilyDetail model);
 
         string DeleteFamilyMember(int familyMemberId);
 
